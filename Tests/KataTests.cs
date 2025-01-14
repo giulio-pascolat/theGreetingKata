@@ -1,26 +1,33 @@
 ﻿using theGreetingKata;
+using theGreetingKata.Inserfaces;
 
 namespace TestProject1;
 
 public class KataTests
 {
-    private readonly Kata _kata = new();
+    private readonly IGreeter _kata = new Kata();
+
     [Fact]
-    public void Should_return_correct_name()
+    public void ShouldReturnCorrectName()
     {
-        Assert.Equal("Hello, Bob", _kata.Greet("Bob"));
+        Assert.Equal("Hello, Bob", _kata.Greet(["Bob"]));
     }
 
     [Fact]
-    public void Should_handle_null()
+    public void ShouldHandleNull()
     {
-        Assert.Equal("Hello, my friend", _kata.Greet());
+        Assert.Equal("Hello, my friend", _kata.Greet([]));
     }
 
+    [Fact]
+    public void ShouldBeUpper()
+    {
+        Assert.Equal("HELLO JERRY!", _kata.Greet(["JERRY"]));
+    }
 
     [Fact]
-    public void Should_be_upper()
+    public void ShouldHandleTwoNames()
     {
-        Assert.Equal("HELLO JERRY!", _kata.Greet("JERRY"));
+        Assert.Equal("Hello, Jill and Jane.", _kata.Greet(["Jill", "Jane"]));
     }
 }

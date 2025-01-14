@@ -4,12 +4,21 @@ namespace theGreetingKata;
 
 public class Kata : IGreeter
 {
-    public string Greet(string? name = "")
+    public string Greet(string[]? names = null)
     {
-        if (string.IsNullOrWhiteSpace(name)) return "Hello, my friend"; 
-        return IsUpper(name) ? $"HELLO {name.ToUpper()}!" : $"Hello, {name}";
+        names ??= [""];
+
+        if (names.Length == 0 || string.IsNullOrWhiteSpace(names[0]))
+            return "Hello, my friend";
+
+        if (names.Length == 1)
+            return IsUpper(names[0]) ? $"HELLO {names[0].ToUpper()}!" : $"Hello, {names[0]}";
+
+        if (names.Length == 2)
+            return $"Hello, {names[0]} and {names[1]}.";
+
+        throw new ArgumentException("Invalid input.");
     }
-    
     
     public bool IsUpper(string name) => name.All(c => !char.IsLetter(c) || char.IsUpper(c));
 }
