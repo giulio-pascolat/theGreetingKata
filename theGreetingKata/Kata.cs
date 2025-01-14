@@ -4,8 +4,8 @@ namespace theGreetingKata;
 
 public class Kata : IGreeter
 {
-    public string Greet(string name)
+    public string Greet(string? name = "")
     {
-        return $"Hello, {name}";
+        return string.IsNullOrWhiteSpace(name) ? "Hello, my friend" : $"Hello, {name}";
     }
 }

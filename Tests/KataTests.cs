@@ -10,4 +10,10 @@ public class KataTests
     {
         Assert.Equal("Hello, Bob", _kata.Greet("Bob"));
     }
+
+    [Fact]
+    public void Should_handle_null()
+    {
+        Assert.Equal("Hello, my friend", _kata.Greet());
+    }
 }
