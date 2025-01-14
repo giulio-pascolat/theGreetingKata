@@ -5,7 +5,7 @@ namespace TestProject1;
 
 public class KataTests
 {
-    private readonly IGreeter _kata = new Kata();
+    private readonly Kata _kata = new();
 
     [Fact]
     public void ShouldReturnCorrectName()
@@ -16,7 +16,7 @@ public class KataTests
     [Fact]
     public void ShouldHandleNull()
     {
-        Assert.Equal("Hello, my friend", _kata.Greet([]));
+        Assert.Equal("Hello, my friend", _kata.Greet());
     }
 
     [Fact]
@@ -29,5 +29,14 @@ public class KataTests
     public void ShouldHandleTwoNames()
     {
         Assert.Equal("Hello, Jill and Jane.", _kata.Greet(["Jill", "Jane"]));
+    }
+
+  
+    [Theory]
+    [InlineData(new[] { "Amy", "Brian", "Charlotte" }, "Hello, Amy, Brian, and Charlotte.")]
+    [InlineData(new[] { "Amy", "Brian", "Charlotte", "Dave" }, "Hello, Amy, Brian, Charlotte, and Dave.")]
+    public void ShouldHandleThreeOrMoreNames(string[] names, string expected)
+    {
+        Assert.Equal(expected, _kata.Greet(names));
     }
 }

@@ -17,8 +17,11 @@ public class Kata : IGreeter
         if (names.Length == 2)
             return $"Hello, {names[0]} and {names[1]}.";
 
-        throw new ArgumentException("Invalid input.");
+        var allButLast = string.Join(", ", names[..^1]);
+        var last = names[^1];
+        return $"Hello, {allButLast}, and {last}.";
+
     }
-    
-    public bool IsUpper(string name) => name.All(c => !char.IsLetter(c) || char.IsUpper(c));
+
+    private static bool IsUpper(string name) => name.All(c => !char.IsLetter(c) || char.IsUpper(c));
 }
