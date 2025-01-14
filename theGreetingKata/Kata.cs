@@ -6,6 +6,10 @@ public class Kata : IGreeter
 {
     public string Greet(string? name = "")
     {
-        return string.IsNullOrWhiteSpace(name) ? "Hello, my friend" : $"Hello, {name}";
+        if (string.IsNullOrWhiteSpace(name)) return "Hello, my friend"; 
+        return IsUpper(name) ? $"HELLO {name.ToUpper()}!" : $"Hello, {name}";
     }
+    
+    
+    public bool IsUpper(string name) => name.All(c => !char.IsLetter(c) || char.IsUpper(c));
 }

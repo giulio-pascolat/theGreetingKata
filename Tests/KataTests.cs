@@ -16,4 +16,11 @@ public class KataTests
     {
         Assert.Equal("Hello, my friend", _kata.Greet());
     }
+
+
+    [Fact]
+    public void Should_be_upper()
+    {
+        Assert.Equal("HELLO JERRY!", _kata.Greet("JERRY"));
+    }
 }
