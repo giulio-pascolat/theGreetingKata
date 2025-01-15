@@ -61,4 +61,12 @@ public void ShouldHandleCommaSeparatedNames(string[] names, string expected)
     {
         Assert.Equal(expected, _kata.Greet(names));
     }
+
+
+    [Theory]
+    [InlineData(new[] { "Bob", "\"Charlie, Dianne\"" }, "Hello, Bob and Charlie, Dianne.")]
+public void ShouldHandleDoubleQuotesdNames(string[] names, string expected)
+    {
+        Assert.Equal(expected, _kata.Greet(names));
+    }
 }
