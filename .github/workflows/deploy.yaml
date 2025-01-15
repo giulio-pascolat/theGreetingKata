@@ -34,6 +34,10 @@ jobs:
       - name: Pack NuGet Package
         run: dotnet pack --configuration Release --output ./nuget-packages
 
+      - name: List NuGet Packages
+        run: ls ./nuget-packages
+
+
       - name: ExecutePush
         run: |
           dotnet nuget add source \
