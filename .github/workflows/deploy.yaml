@@ -27,7 +27,7 @@ jobs:
 
       # Step 4: Build the solution
       - name: Build Solution
-        run: dotnet build --no-restore --configuration Debug
+        run: dotnet build --no-restore --configuration Release
         
       - name: Build the Tests Project
         run: dotnet build ./Tests/Tests.csproj --configuration Debug --no-restore
