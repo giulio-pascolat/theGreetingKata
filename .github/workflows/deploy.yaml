@@ -47,4 +47,7 @@ jobs:
             --password ${{ secrets.TOKEN }} \
             --store-password-in-clear-text \
             --name github "https://nuget.pkg.github.com/giulio-pascolat/index.json"   
-      
+          
+          dotnet nuget push "Greeting/bin/Relese/Greeting.1.0.${{github.run_number}}.nupkg"  \
+            --api-key ${{ secrets.TOKEN }}
+            --source "github"
