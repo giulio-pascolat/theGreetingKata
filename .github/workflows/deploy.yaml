@@ -32,7 +32,7 @@ jobs:
         run: dotnet test --no-build --verbosity normal --diag ./test.log
 
       - name: Pack NuGet Package
-        run: dotnet pack --configuration Release --output ./nuget-packages
+        run: dotnet pack --configuration Release --output ./nuget-packages/Greeting.1.0.${{github.run_number}}.nupkg
 
       - name: List NuGet Packages
         run: ls ./nuget-packages
