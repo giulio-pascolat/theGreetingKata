@@ -28,6 +28,9 @@ jobs:
       # Step 4: Build the solution
       - name: Build Solution
         run: dotnet build --no-restore --configuration Debug
+        
+      - name: Build the Tests Project
+        run: dotnet build ./Tests/Tests.csproj --configuration Debug --no-restore
 
       - name: Run Tests
         run: dotnet test --no-build --verbosity normal --diag ./test.log
