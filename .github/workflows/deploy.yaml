@@ -27,7 +27,7 @@ jobs:
 
       # Step 4: Build the solution
       - name: Build Solution
-        run: dotnet build --no-restore --configuration Release
+        run: dotnet build --no-restore --configuration Debug
 
       - name: Run Tests
         run: dotnet test --no-build --verbosity normal --diag ./test.log
