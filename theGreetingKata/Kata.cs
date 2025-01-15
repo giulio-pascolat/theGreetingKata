@@ -11,23 +11,11 @@ public class Kata : IGreeter
         if (names.Length == 0 || string.IsNullOrWhiteSpace(names[0]))
             return "Hello, my friend.";
 
-        var normalNames = names.Where(name => !IsUpper(name)).ToArray();
-        var shoutedNames = names.Where(IsUpper).ToArray();
+        var (normalNames, shoutedNames) = SplitNamesByCase(names);
+  
+        var normalGreeting = CreateGreeting(normalNames, false);
 
-        var normalGreeting = normalNames.Length switch
-        {
-            0 => "",
-            1 => $"Hello, {normalNames[0]}.",
-            2 => $"Hello, {normalNames[0]} and {normalNames[1]}.",
-            _ => $"Hello, {string.Join(", ", normalNames[..^1])}, and {normalNames[^1]}."
-        };
-
-        var shoutedGreeting = shoutedNames.Length switch
-        {
-            0 => "",
-            1 => $"HELLO {shoutedNames[0]}!",
-            _ => $"HELLO {string.Join(" AND ", shoutedNames)}!"
-        };
+        var shoutedGreeting = CreateGreeting(shoutedNames, true);
         
         if (normalNames.Length > 0)
         {
@@ -38,4 +26,21 @@ public class Kata : IGreeter
 
 
     private static bool IsUpper(string name) => name.All(c => !char.IsLetter(c) || char.IsUpper(c));
+    
+    private static (string[] normal, string[] shouted) SplitNamesByCase(string[] names) =>
+        (names.Where(name => !IsUpper(name)).ToArray(),
+            names.Where(IsUpper).ToArray());
+
+
+    private static string CreateGreeting(string[] names, bool isShouted)
+    {
+        return names.Length switch
+        {
+            0 => "",
+            1 => isShouted ? $"HELLO {names[0]}!" : $"Hello, {names[0]}.",
+            2 => isShouted ? $"HELLO {string.Join(" AND ", names)}!" : $"Hello, {names[0]} and {names[1]}.",
+            _ => isShouted ? $"HELLO {string.Join(", ", names[..^1])} AND {names[^1]}!" : $"Hello, {string.Join(", ", names[..^1])}, and {names[^1]}."
+        };
+
+    }
 }

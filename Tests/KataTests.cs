@@ -48,7 +48,7 @@ public class KataTests
     [InlineData(new[] { "John", "Tina" }, "Hello, John and Tina.")]
     [InlineData(new[] { "Alice", "Charlie" }, "Hello, Alice and Charlie.")]
     [InlineData(new[] { "Mia", "JACK", "Oliver", "SARA" }, "Hello, Mia and Oliver. AND HELLO JACK AND SARA!")]
-    [InlineData(new[] { "JILL", "STEVE", "KATE" }, "HELLO JILL AND STEVE AND KATE!")]
+    [InlineData(new[] { "JILL", "STEVE", "KATE" }, "HELLO JILL, STEVE AND KATE!")]
     public void ShouldHandleMixedNames(string[] names, string expected)
     {
         Assert.Equal(expected, _kata.Greet(names));
