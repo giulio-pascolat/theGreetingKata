@@ -27,9 +27,13 @@ public class Kata : IGreeter
 
     private static bool IsUpper(string name) => name.All(c => !char.IsLetter(c) || char.IsUpper(c));
     
-    private static (string[] normal, string[] shouted) SplitNamesByCase(string[] names) =>
-        (names.Where(name => !IsUpper(name)).ToArray(),
-            names.Where(IsUpper).ToArray());
+    private static (string[] normal, string[] shouted) SplitNamesByCase(string[] names){ 
+        var splitNames = names
+        .SelectMany(name => name.Split(", ", StringSplitOptions.RemoveEmptyEntries))
+        .ToArray();
+    
+        return (splitNames.Where(name => !IsUpper(name)).ToArray(), splitNames.Where(IsUpper).ToArray());
+    }
 
 
     private static string CreateGreeting(string[] names, bool isShouted)
