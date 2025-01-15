@@ -2,9 +2,11 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
+        <PackageId>GreetingKata</PackageId>
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <Authors>Giulio Pascolat</Authors>
     </PropertyGroup>
 
 </Project>
