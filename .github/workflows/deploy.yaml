@@ -40,10 +40,11 @@ jobs:
         run: dotnet pack --no-build --configuration Release --output ./nuget-packages
 
       # Step 7: Push NuGet package to NuGet.org
-      - name: Publish to NuGet.org
-        env:
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}  # Usa il Secret al posto della chiave hardcoded
+      - name: ExecutePush
         run: |
-          dotnet nuget push ./nuget-packages/*.nupkg \
-            --api-key $NUGET_API_KEY \
-            --source https://api.nuget.org/v3/index.json
+          dotnet nuget add source \
+            --username giulio-pascolat \
+            --password ${{ secrets.TOKEN }} \
+            --name github \
+            https://nuget.pkg.github.com/giulio-pascolat/index.json
+      
