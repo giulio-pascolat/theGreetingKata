@@ -45,6 +45,6 @@ jobs:
           dotnet nuget add source \
             --username giulio-pascolat \
             --password ${{ secrets.TOKEN }} \
-            --name github \
-            https://nuget.pkg.github.com/giulio-pascolat/index.json
+            --store-password-in-clear-text \
+            --name github "https://nuget.pkg.github.com/giulio-pascolat/index.json"   
       
