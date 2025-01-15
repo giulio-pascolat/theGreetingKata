@@ -39,4 +39,18 @@ public class KataTests
     {
         Assert.Equal(expected, _kata.Greet(names));
     }
+    
+    
+   
+    [Theory]
+    [InlineData(new[] { "Amy", "BRIAN", "Charlotte" }, "Hello, Amy and Charlotte. AND HELLO BRIAN!")]
+    [InlineData(new[] { "John", "TOM" }, "Hello, John. AND HELLO TOM!")]
+    [InlineData(new[] { "John", "Tina" }, "Hello, John and Tina.")]
+    [InlineData(new[] { "Alice", "Charlie" }, "Hello, Alice and Charlie.")]
+    [InlineData(new[] { "Mia", "JACK", "Oliver", "SARA" }, "Hello, Mia and Oliver. AND HELLO JACK AND SARA!")]
+    [InlineData(new[] { "JILL", "STEVE", "KATE" }, "HELLO JILL AND STEVE AND KATE!")]
+    public void ShouldHandleMixedNames(string[] names, string expected)
+    {
+        Assert.Equal(expected, _kata.Greet(names));
+    }
 }
