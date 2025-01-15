@@ -29,9 +29,8 @@ jobs:
       - name: Build Solution
         run: dotnet build --no-restore --configuration Release
 
-      # Step 5: Run tests
       - name: Run Tests
-        run: dotnet test --no-build --verbosity normal
+        run: dotnet test --no-build --verbosity normal --diag ./test.log
 
       # Step 6: Pack NuGet package
       - name: Pack NuGet Package
