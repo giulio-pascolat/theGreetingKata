@@ -1,11 +1,15 @@
 ﻿using theGreetingKata;
 using theGreetingKata.Inserfaces;
+using theGreetingKata.Interfaces;
+using theGreetingKata.Services;
 
 namespace TestProject1;
 
 public class KataTests
 {
-    private readonly Kata _kata = new();
+    private static readonly IGreetingFormatter Formatter = new GreetingFormatter();
+    private static readonly INameSplitter NameSplitter = new NameSplitter();
+    private readonly Kata _kata = new(NameSplitter, Formatter);
 
     [Fact]
     public void ShouldReturnCorrectName()
