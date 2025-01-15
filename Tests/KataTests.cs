@@ -10,13 +10,13 @@ public class KataTests
     [Fact]
     public void ShouldReturnCorrectName()
     {
-        Assert.Equal("Hello, Bob", _kata.Greet(["Bob"]));
+        Assert.Equal("Hello, Bob.", _kata.Greet(["Bob"]));
     }
 
     [Fact]
     public void ShouldHandleNull()
     {
-        Assert.Equal("Hello, my friend", _kata.Greet());
+        Assert.Equal("Hello, my friend.", _kata.Greet());
     }
 
     [Fact]

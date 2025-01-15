@@ -9,7 +9,7 @@ public class Kata : IGreeter
         names ??= [""];
 
         if (names.Length == 0 || string.IsNullOrWhiteSpace(names[0]))
-            return "Hello, my friend";
+            return "Hello, my friend.";
 
         var normalNames = names.Where(name => !IsUpper(name)).ToArray();
         var shoutedNames = names.Where(IsUpper).ToArray();
