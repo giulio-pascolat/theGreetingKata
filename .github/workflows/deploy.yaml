@@ -43,6 +43,6 @@ jobs:
             --store-password-in-clear-text \
             --name github "https://nuget.pkg.github.com/giulio-pascolat/index.json"   
           
-          dotnet nuget push "/home/runner/work/theGreetingKata/theGreetingKata/theGreetingKata/bin/Release/Greeting.1.0.${{github.run_number}}.nupkg"  \
+          dotnet nuget push "/home/runner/work/theGreetingKata/theGreetingKata/theGreetingKata/bin/Release/GreetingKata.1.0.${{github.run_number}}.nupkg"  \
             --api-key ${{ secrets.TOKEN }} \
             --source "github"
