@@ -32,11 +32,8 @@ jobs:
         run: dotnet test --no-build --verbosity normal --diag ./test.log
 
       - name: Pack NuGet Package
-        run: dotnet pack --configuration Release --output ./nuget-packages/Greeting.1.0.${{github.run_number}}.nupkg
-
-      - name: List NuGet Packages
-        run: ls ./nuget-packages
-
+        run: | 
+          dotnet pack --configuration Release -p PackageVersion=1.0.${{github.run_number}}
 
       - name: ExecutePush
         run: |
@@ -46,6 +43,6 @@ jobs:
             --store-password-in-clear-text \
             --name github "https://nuget.pkg.github.com/giulio-pascolat/index.json"   
           
-          dotnet nuget push "./nuget-packages/Greeting.1.0.${{github.run_number}}.nupkg"  \
+          dotnet nuget push "theGreetingKata/bin/Release/Greeting.1.0.${{github.run_number}}.nupkg"  \
             --api-key ${{ secrets.TOKEN }} \
             --source "github"
